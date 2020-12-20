@@ -3,27 +3,25 @@
     return (parseInt(Math.random()*10)) * 1000
   }
   const date = () => {
-   const now = new Date()
-   return `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+    const now = new Date()
+    return `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
   }
   let randomTime = getRandomTime()
   let i = 0, toId;
 
   function setTo() {
-   if (toId) clearTimeout(toId);
-
-   randomTime = getRandomTime()
-   toId = setTimeout(getChannelP$ints, randomTime)
+    randomTime = getRandomTime()
+    toId = setTimeout(getChannelP$ints, randomTime)
   }
 
   function getChannelP$ints() {
-   const clickButton = document.querySelectorAll(".community-points-summary button")[1]
-   if (!clickButton) return false;
+    const clickButton = document.querySelectorAll(".community-points-summary button")[1]
+    if (!clickButton) return false;
     
-   clickButton.click()
-   console.log(`Collected: ${++i} ${date()}`)
-   setTo() 
+    clickButton.click()
+    console.log(`Collected: ${++i} ${date()}`)
+    setTo() 
   }
 
-  setTimeout(getChannelP$ints, randomTime)
+  toId = setTimeout(getChannelP$ints, randomTime)
 }();
