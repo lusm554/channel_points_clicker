@@ -10,18 +10,20 @@
   let i = 0, toId;
 
   function setTo() {
+    clearTimeout(toId)
     randomTime = getRandomTime()
     toId = setTimeout(getChannelP$ints, randomTime)
   }
 
   function getChannelP$ints() {
     const clickButton = document.querySelectorAll(".community-points-summary button")[1]
-    if (!clickButton) return false;
+    if (!clickButton) return setTo();
     
     clickButton.click()
     console.log(`Collected: ${++i} ${date()}`)
-    setTo() 
+    setTo()
   }
 
   toId = setTimeout(getChannelP$ints, randomTime)
 }();
+
